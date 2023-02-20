@@ -19,7 +19,11 @@ class JugadorTest {
 		Jugador j1 = new Jugador();
 		j1.ponerDorsal(5);
 		int dorsalEsperado = j1.getDorsal(), dorsalActual = 5;
+<<<<<<< HEAD
 		assertSame(dorsalEsperado, dorsalActual); // 
+=======
+		assertEquals(dorsalEsperado, dorsalActual);
+>>>>>>> develop
 		
 	}
 	
@@ -32,7 +36,7 @@ class JugadorTest {
 		int dorsalEsperado = j1.getDorsal();
 		int dorsalInesperado = 5;
 		
-		assertNotSame(dorsalInesperado, dorsalEsperado);
+		assertNotEquals(dorsalInesperado, dorsalEsperado);
 	}
 	
 	
