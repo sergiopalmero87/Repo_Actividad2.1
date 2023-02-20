@@ -8,7 +8,6 @@ package Jugador;
  * @version 1.0
  *
  */
-
 public class Jugador {
 	/**
 	 * Número que representa el dorsal del jugador.

@@ -6,7 +6,6 @@ package Soldado;
  * @version 1.0
  *
  */
-
 public class Soldado {
 	/**
 	 * el soldado está muerto
@@ -39,11 +38,10 @@ public class Soldado {
 	public int getNumeroBalas() {
 		return numeroBalas;
 	}
-
+	
 	public void setNumeroBalas(int numeroBalas) {
 		this.numeroBalas = numeroBalas;
 	}
-
 	/**
      * método que comprueba que el soldado puede disparar.
      * 
@@ -54,13 +52,10 @@ public class Soldado {
                   if(this.numeroBalas > 0) {
 
                                 return true;
-
                   }                          
 
                   return false;
-
     }
-
    /**
     * método que dispara al soldado y cambia el valor de estaMuerto de false a true.
     * 
