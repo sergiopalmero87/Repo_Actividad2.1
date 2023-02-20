@@ -1,53 +1,34 @@
 package Soldado;
-
 /**
+ * Clase que representa un soldado con dos atributos estaMuerto y numeroBalas
  * 
- * Entidad soldado con atributos privados estaMuerto y numeroBalas.
- * 
- * Tendra diferentes metodos para realizar acciones con el soldado, tales como:
- * averiguar si puede disparar y poder hacer esa accion.
- * 
- * @author Sergio Palmero
+ * @author Christian
  * @version 1.0
  *
  */
+
 public class Soldado {
 	/**
-	 * Atributo estaMuerto
+	 * el soldado está muerto
 	 */
 	private boolean estaMuerto;
-
 	/**
-	 * Atributo numeroBalas
+	 * Número entero que representa el numero de balas que tiene el soldado
 	 */
-
-	private int numeroBalas;
-
-	/**
-	 * Constructor por defecto
-	 */
-	public Soldado() {
+    private int numeroBalas;
+    
+    public Soldado() {
 		super();
 	}
-
-	/**
-	 * Constructor con parametros
-	 * 
-	 * @param estaMuerto  representa si esta muerto o no
-	 * @param numeroBalas representa el numero de balas
-	 */
-	public Soldado(boolean estaMuerto, int numeroBalas) {
+   
+    public Soldado(boolean estaMuerto, int numeroBalas) {
 		super();
 		this.estaMuerto = estaMuerto;
 		this.numeroBalas = numeroBalas;
 	}
-
-	// Getter and Setter
-	/**
-	 * Getter and setter
-	 * 
-	 */
-	public boolean isEstaMuerto() {
+      
+    
+    public boolean isEstaMuerto() {
 		return estaMuerto;
 	}
 
@@ -63,46 +44,35 @@ public class Soldado {
 		this.numeroBalas = numeroBalas;
 	}
 
-	// Metodos propios
 	/**
-	 * 
-	 * Metodo que establece si el soldado puede disparar. Si el numero de balas que
-	 * tiene el soldado es mayor que 0 si que puede disparar. Si el numero de balas
-	 * es menor que 0 no podra disparar.
-	 * 
-	 * @return true si puede disparar y false si no puede.
-	 */
-
+     * método que comprueba que el soldado puede disparar.
+     * 
+     * @return true si el valor de numeroBalas es mayor que 0. Si es menor devuelve false
+     */
 	public boolean puedeDisparar() {
 
-		if (this.numeroBalas > 0) {
+                  if(this.numeroBalas > 0) {
 
-			return true;
+                                return true;
 
-		}
+                  }                          
 
-		return false;
+                  return false;
 
-	}
+    }
 
-	/**
-	 * 
-	 * Metodo que establece la accion de disparar. El soldado pasado por parametro
-	 * no puede ser nulo ni estar vacio
-	 * 
-	 * @param sol El soldado que realiza la accion de disparar.
-	 * @throws IllegalArgumentException si soldado en nulo o esta vacio.
-	 * 
-	 */
-	public void disparar(Soldado sol) {
+   /**
+    * método que dispara al soldado y cambia el valor de estaMuerto de false a true.
+    * 
+    * @param sol soldado pasado por parámetro
+    */
 
-		this.numeroBalas--;
+    public void disparar(Soldado sol) {
 
-		sol.estaMuerto = true;
+                  this.numeroBalas--;
 
-	}
+                  sol.estaMuerto = true;
+
+    }
 
 }
-
-
-

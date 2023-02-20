@@ -1,6 +1,10 @@
 package junit5;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
@@ -11,47 +15,86 @@ import org.junit.jupiter.api.Test;
 import Jugador.Jugador;
 
 class JugadorTest {
+	private Jugador player1;
+	
+	//Creamos un @BeforeEach y un @AfterEach para tener un jugador limpio para cada test que vamos a realizar.
+	@BeforeEach
+	void setUp() throws Exception {
+		player1 = new Jugador();
+	}
+	
+	@AfterEach
+	void tearDown() throws Exception {
+		player1 = null;
+	}
 
-	//Test para saber si el dorsal del jugador es el que el elige.
+	//Test para comprobar que el dorsal que le pasamos es el mismo que recibe.
 	@Test
 	void ponerDorsalTest() {
+				
+		player1.ponerDorsal(5);
 		
-		Jugador j1 = new Jugador();
-		j1.ponerDorsal(5);
-		int dorsalEsperado = j1.getDorsal(), dorsalActual = 5;
-		assertSame(dorsalEsperado, dorsalActual); // 
+		int dorsalEsperado = player1.getDorsal();
+		int dorsalActual = 5;
+		assertEquals(dorsalEsperado, dorsalActual); // 
 		
 	}
 	
-	//Test para saber si el dorsal del jugador no es el que el elige. Si el dorsal que elige el jugador es ma
+	//Test para saber si la condicion de que devuelva -1 cuando el numero del dorsal sea mayor que 30.
 	@Test
-	void ponerDorsalNegativoTest() {
+	void ponerDorsalMenorQueUnoTest() {		
+		player1.ponerDorsal(0);
 		
-		Jugador j1 = new Jugador();
-		j1.ponerDorsal(31);
-		int dorsalEsperado = j1.getDorsal();
-		int dorsalInesperado = 5;
+		int dorsalEsperado = player1.getDorsal();
+		int dorsalesperado =-1;
 		
-		assertNotSame(dorsalInesperado, dorsalEsperado);
+		assertEquals(dorsalesperado, dorsalEsperado);
 	}
 	
-	
-	//Test para saber si el jugador esta expulsado
+	//Test para saber si la condicion de que devuelva -1 cuando el número del dorsal sea mayor que 30.
 	@Test
-	void estaExpulsadoTest() {
-		int tarjetasAmarillas = 2, tarjetasRojas = 1;
-		Jugador j1 = new Jugador(0, tarjetasAmarillas, tarjetasRojas);
-		assertTrue(true);
+	void ponerDorsalMayorQueTreintaTest() {		
+		player1.ponerDorsal(31);
+		
+		int dorsalEsperado = player1.getDorsal();
+		int dorsalesperado =-1;
+		
+		assertEquals(dorsalesperado, dorsalEsperado);
 	}
 	
 	
-	//Test para saber si el jugador no esta expulsado.
+	//Test para saber si el jugador esta expulsado por tarjetas amarillas.
 	@Test
-	void noEstaExpulsadoTest() {
-		int tarjetasAmarillas = 1, tarjetasRojas = 0;
-		Jugador j1 = new Jugador(0, tarjetasAmarillas, tarjetasRojas);
-		assertTrue(true);
+	void estaExpulsadoTestDobleAmarilla() {
+		player1.setNumeroTarjetasAmarillas(2);		
+		
+		assertTrue(player1.estaExpulsado());
 	}
+	
+	//Test para saber si el jugador esta expulsado por tarjeta roja.
+		@Test
+		void estaExpulsadoTestPorRoja() {
+			player1.setNumeroTarjetasRojas(1);	
+			
+			assertTrue(player1.estaExpulsado());
+		}
+	
+	
+	//Test para saber si el jugador no esta expulsado con una amarilla.
+	@Test
+	void noEstaExpulsadoTestUnaAmarilla() {
+		player1.setNumeroTarjetasAmarillas(1);
+		
+		assertFalse(player1.estaExpulsado());
+	}
+	
+	//Test para saber si el jugador no esta expulsado sin tarjeta roja
+		@Test
+		void noEstaExpulsadoTestSinRoja() {
+			player1.setNumeroTarjetasRojas(0);
+			
+			assertFalse(player1.estaExpulsado());
+		}
 
 	
 
