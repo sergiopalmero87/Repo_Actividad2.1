@@ -32,10 +32,22 @@ class SoldadoTest {
 		assertFalse(s2.puedeDisparar());
 	}
 	
+	//Test para comprobar que el soldado está vivo y puede disparar. 
+	//Cuando esta muerto no puede disparar
+		@Test
+		void estaVivoYDisparaTest() {
+			Soldado sol = new Soldado();
+			
+			assertFalse(sol.isEstaMuerto());
+			sol.disparar(sol);
+			
+			assertTrue(sol.isEstaMuerto());
+			sol.disparar(sol);
+	
      
 
 }
-
+}
 	
 
 
